@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <script type="text/javascript" src="js/three.min.js" ></script>
+    <script type="text/javascript" src="js/photo-sphere-viewer.min.js"></script>
+    
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+    </script>
+<style>
+.body{
+	height: 100%;
+	width: 100%;
+	margin: 0%;
+	padding: 0%;
+}
+
+#content{
+	/*显示的框大小*/
+	//height: 1000px;
+	//width: 1000px;
+	
+	
+	
+}	
+.show{
+	background-color:lightblue;
+	//position: absolute;
+	//height:100%;
+	height: 300px;
+	//height: 50%;
+	width:100%;
+	margin-top: 2px;
+	border: dodgerblue 1px solid;
+	
+	
+}
+#view1{
+	
+}
+#view2{
+	//margin-left: 50%;
+}
+#view3
+{
+	//margin-top: 50%;
+}
+#view4{
+	//margin-top: 50%;
+	//margin-left: 50%;
+}
+</style>
+</head>
+<body onload="loadimg()">
+		<!--
+        	作者：1186481819@qq.com
+        	时间：2018-05-30
+        	描述：测试360度全景图片的播放
+       -->
+       
+		<div id="content">
+			
+		<button onclick="test()" class="mui-btn-blue">手动加载</button>
+     	<button onclick="TestGetFile()" class="mui-btn-blue">测试本地文件api</button>
+       
+       <div id="view1" class="show">
+       	<p>自加载</p>
+       </div>
+       <div id="view2" class="show">
+       	<p>手动加载</p>
+       </div>
+       <div id="view3" class="show">
+       	<p>本地文件选择加载</p>
+       </div>
+       <div id="view4" class="show">
+       	
+       </div>
+      </div>        
+        
+	
+<script>
+	//创建一个显示容器
+	var PSV=new PhotoSphereViewer({
+	//文件路径
+    panorama:'img/Bryce-Canyon-By-Jess-Beauchemin.jpg',
+    //显示容器
+    container:view2,
+    //autoload：可选，默认值为true，true为自动调用全景图，false为在后面加载全景图(通过.load()方法)。 
+	autoload:false,
+	
+	//动画开始的时间ms,2秒后动画开始
+	time_anim:2000,
+	//显示导航栏,设置导航栏后就会自动动画实现
+	navbar:true,
+	//动画的速度,默为2rpm,每秒/分钟多少radians/degrees/revolutions。
+	
+	}
+);
+/*测试功能*/
+function test()
+{
+	//设置autoload为false之后就必须在后面进行调用
+	PSV.load();
+}
+/*测试文件选择api*/
+function TestGetFile(){
+	
+	
+	
+}
+/*自加载*/
+function loadimg()
+{
+	var selfload=new PhotoSphereViewer({
+	//文件路径
+    panorama:'img/Bryce-Canyon-By-Jess-Beauchemin.jpg',
+    //显示容器
+    container:view1,
+    //autoload：可选，默认值为true，true为自动调用全景图，false为在后面加载全景图(通过.load()方法)。 
+	//autoload:false,
+	
+	//动画开始的时间ms,2秒后动画开始
+	time_anim:2000,
+	//显示导航栏,设置导航栏后就会自动动画实现
+	navbar:true,
+	//动画的速度,默为2rpm,每秒/分钟多少radians/degrees/revolutions。
+	}
+	);
+}
+</script>
+</body>
+</html>
